@@ -1,28 +1,28 @@
 version: 2.1
-
 executors:
   pyinstaller:
     docker:
       - image: fydeinc/pyinstaller
-
-
 jobs:
   build-binary:
-   executor: pyinstaller
+    executor: pyinstaller
     steps:
       - checkout
       - run: ldd --version
       - run: pip install pyinstaller --upgrade
       - run: pip install semgrep==1.52.0 --target ./semgrepinstall
-      - run: |
-          { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py; echo 'sys.exit(main())';} > tempfile
+      - run: >
+          { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py;
+          echo 'sys.exit(main())';} > tempfile
+
           mv tempfile ./semgrepinstall/semgrep/main.py
-          cp ./semgrepinstall/semgrep/main.py ./semgrepinstall/semgrep/__main__.py
+
+          cp ./semgrepinstall/semgrep/main.py
+          ./semgrepinstall/semgrep/__main__.py
+
           cat ./semgrepinstall/semgrep/main.py
       - run: pyinstaller semgrep.spec
-
 workflows:
   binary-builder:
     jobs:
       - build-binary
-      

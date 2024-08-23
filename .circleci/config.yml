@@ -19,7 +19,7 @@ jobs:
           mv tempfile ./semgrepinstall/semgrep/main.py
           cp ./semgrepinstall/semgrep/main.py ./semgrepinstall/semgrep/__main__.py
           cat ./semgrepinstall/semgrep/main.py
-        - run: pyinstaller semgrep.spec
+      - run: pyinstaller semgrep.spec
 
 workflows:
   binary-builder:

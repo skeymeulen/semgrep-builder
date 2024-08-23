@@ -22,10 +22,9 @@ jobs:
 
           cat ./semgrepinstall/semgrep/main.py
       - run: pyinstaller semgrep.spec
-      - run: zip -j semgrep.zip dist/semgrep
       - store_artifacts:
-          path: semgrep.zip
-          destination: semgrep.zip
+          path: dist/semgrep
+          destination: semgrep-linux
 workflows:
   binary-builder:
     jobs:

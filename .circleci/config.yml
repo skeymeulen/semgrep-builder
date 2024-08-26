@@ -10,6 +10,10 @@ jobs:
       - checkout
       - run: ldd --version
       - run:
+          sudo apt-get update
+
+          sudo apt-get install curl
+      
           curl https://pyenv.run | bash
 
           pyenv install 3.8.0

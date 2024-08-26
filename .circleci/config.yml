@@ -20,7 +20,7 @@ jobs:
           
           apt-get clean
       - run: python3 --version && pip3 --version
-      - run: python3 -m pip install --no-cache-dir --upgrade pipenv
+      - run: python3 -m pip install --no-cache-dir pipenv
       - run: pipenv run pip install pyinstaller
       - run: pipenv run pip install semgrep==1.52.0 --target ./semgrepinstall
       - run: >

@@ -14,9 +14,9 @@ jobs:
 
           apt-mark hold libc6
 
-          apt install -y libcurl4-openssl-dev
-
           apt-get install -y curl
+
+          apt-get install -f
       
           curl https://pyenv.run | bash
 

@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: ldd --version
       - run:
-          sudo apt-mark hold libc6
+          apt-mark hold libc6
           
           apt-get update
 

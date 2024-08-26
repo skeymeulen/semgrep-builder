@@ -2,13 +2,22 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: ubuntu:18.04
+      - image: ubuntu::bionic-20171114
 jobs:
   build-binary:
     executor: pyinstaller
     steps:
       - checkout
       - run: ldd --version
+      - run: | 
+        apt-get update && \
+        apt-get install -y \
+        python3 \
+        python3-pip \
+        python3-venv \
+        python3-dev \
+        && apt-get clean
+      - run: python3 --version && pip3 --version
       - run: python -m pip install --no-cache-dir --upgrade pipenv
       - run: pipenv run pip install pyinstaller
       - run: pipenv run pip install semgrep==1.52.0 --target ./semgrepinstall

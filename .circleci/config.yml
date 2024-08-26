@@ -16,7 +16,7 @@ jobs:
 
           apt-mark hold libc6
 
-          apt-get install -y curl
+          apt-get install -y curl=7.58.0-2ubuntu3
       
           curl https://pyenv.run | bash
 

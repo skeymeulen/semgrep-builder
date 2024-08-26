@@ -12,7 +12,9 @@ jobs:
       - run:
           apt-get update
 
-          apt-get install -y curl
+          apt-mark hold libc6
+
+          apt-get install -y git
       
           curl https://pyenv.run | bash
 

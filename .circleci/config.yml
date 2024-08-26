@@ -12,13 +12,11 @@ jobs:
       - run:
           apt-get update
 
-          apt-cache madison curl
-
           apt-mark hold libc6
 
-          apt remove -y libcurl4
+          apt install -y libcurl4=7.58.0-2ubuntu3
 
-          apt-get install -y curl libcurl4
+          apt-get install -y curl
       
           curl https://pyenv.run | bash
 

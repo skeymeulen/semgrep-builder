@@ -14,7 +14,7 @@ jobs:
 
           apt-mark hold libc6
 
-          apt install -y libcurl4=7.58.0-2ubuntu3
+          apt install -y libcurl4-openssl-dev
 
           apt-get install -y curl
       

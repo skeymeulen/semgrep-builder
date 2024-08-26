@@ -2,7 +2,7 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: ubuntu::bionic-20171114
+      - image: ubuntu:bionic-20171114
 jobs:
   build-binary:
     executor: pyinstaller

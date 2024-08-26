@@ -9,9 +9,11 @@ jobs:
     steps:
       - checkout
       - run: ldd --version
-      - run: >
+      - run:
           apt-get update
+          
           apt-get install -y python3 python3-pip python3-venv python3-dev
+          
           apt-get clean
       - run: python3 --version && pip3 --version
       - run: python -m pip install --no-cache-dir --upgrade pipenv

@@ -10,13 +10,9 @@ jobs:
       - checkout
       - run: ldd --version
       - run:
-          apt-get update
 
-          apt-mark hold libc6
-
-          apt-get install -y libgssapi-krb5-2 libcurl3-gnutls git
       
-          curl https://pyenv.run | bash
+          wget https://pyenv.run | bash
 
           pyenv install 3.8.0
 

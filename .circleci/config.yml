@@ -9,6 +9,8 @@ jobs:
     steps:
       - checkout
       - run: ldd --version
+      - run: yum install -y git
+      - run: ldd --version
       - run: curl https://pyenv.run | bash
       - run: pyenv version
       - run: pyenv install 3.8

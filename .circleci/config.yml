@@ -1,3 +1,4 @@
+---
 version: 2.1
 executors:
   pyinstaller:
@@ -9,40 +10,50 @@ jobs:
     steps:
       - checkout
       - run: ldd --version
-      - run: yum install -y git gcc make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils tar zip
+      - run: yum install -y git gcc make zlib-devel bzip2 bzip2-devel readline-devel
+          sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+          tar zip
       - run: ldd --version
       - run: curl https://pyenv.run | bash
-      - run:
-             # Set up pyenv
-             export PYENV_ROOT="$HOME/.pyenv"
-             export PATH="$PYENV_ROOT/bin:$PATH"
-             eval "$(pyenv init --path)"
-             eval "$(pyenv init -)"
+      - run: >-
+          # Set up pyenv export PYENV_ROOT="$HOME/.pyenv"
 
-             # Python is 3.8 needed for Semgrep 1.52.0
-             pyenv install 3.8
-             pyenv global 3.8
+          export PATH="$PYENV_ROOT/bin:$PATH"
 
-             pip install pyinstaller
+          eval "$(pyenv init --path)"
 
-             pip install semgrep==1.52.0 --target ./semgrepinstall
+          eval "$(pyenv init -)"
 
-             # Need to make some tweaks to main.py. Semgrep doesn't want you to run it via Python, but we overwrite that here
-             { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py;
-             echo 'sys.exit(main())';} > tempfile
+          # Python is 3.8 needed for Semgrep 1.52.0 
 
-             mv tempfile ./semgrepinstall/semgrep/main.py
+          pyenv install 3.8
 
-             cp ./semgrepinstall/semgrep/main.py
-             ./semgrepinstall/semgrep/__main__.py
+          pyenv global 3.8
 
-             # Package Semgrep using PyInstaller
-             pyinstaller semgrep.spec
+          # Install pyinstaller and semgrep
+          
+          pip install pyinstaller
+
+          pip install semgrep==1.52.0 --target ./semgrepinstall
+
+          # Need to make some tweaks to main.py. Semgrep doesn't want you to run it via Python, but we overwrite that here 
+
+          { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py; echo 'sys.exit(main())';} > tempfile
+
+          mv tempfile ./semgrepinstall/semgrep/main.py
+
+          cp ./semgrepinstall/semgrep/main.py ./semgrepinstall/semgrep/__main__.py
+
+          cat ./semgrepinstall/semgrep/main.py
+
+          # Package Semgrep using PyInstaller 
+
+          pyinstaller semgrep.spec
       - run: chmod +x dist/semgrep
       - run: zip -j semgrep.zip dist/semgrep
       - store_artifacts:
           path: semgrep.zip
-          destination: semgrep-linux
+          destination: semgrep_linux_X86_64.zip
 workflows:
   binary-builder:
     jobs:

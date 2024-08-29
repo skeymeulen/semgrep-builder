@@ -12,6 +12,17 @@ jobs:
       - run: yum install -y git
       - run: ldd --version
       - run: curl https://pyenv.run | bash
+      - run:
+             export PATH="$HOME/.pyenv/bin:$PATH"
+             
+             eval "$(pyenv init --path)"
+             
+             eval "$(pyenv init -)"
+             
+             eval "$(pyenv virtualenv-init -)"
+
+             source ~/.bashrc
+             
       - run: pyenv version
       - run: pyenv install 3.8
       - run: pyenv global 3.8

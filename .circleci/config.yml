@@ -2,7 +2,7 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: demosdemon/pyenv
+      - image: themattrix/pyenv
 jobs:
   build-binary:
     executor: pyinstaller
@@ -10,6 +10,8 @@ jobs:
       - checkout
       - run: ldd --version
       - run: pyenv version
+      - run: pyenv install 3.8
+      - run: pyenv global 3.8
       - run: python --version
       - run: python -m pip install --no-cache-dir pipenv
       - run: pipenv run pip install pyinstaller

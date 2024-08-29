@@ -22,6 +22,12 @@ jobs:
              eval "$(pyenv init -)"
 
              pyenv version
+
+             pyenv install 3.8
+
+             pyenv global 3.8
+
+             python --version
             
       - run: pyenv version
       - run: pyenv install 3.8

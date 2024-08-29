@@ -2,7 +2,7 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: themattrix/pyenv
+      - image: demosdemon/pyenv
 jobs:
   build-binary:
     executor: pyinstaller

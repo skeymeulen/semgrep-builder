@@ -10,8 +10,8 @@ jobs:
       - checkout
       - run: ldd --version
       - run: pyenv version
-      - run: pyenv install miniconda-3.8.3
-      - run: pyenv global miniconda-3.8.3
+      - run: pyenv install 3.8.4
+      - run: pyenv global 3.8.4
       - run: python --version
       - run: python -m pip install --no-cache-dir pipenv
       - run: pipenv run pip install pyinstaller

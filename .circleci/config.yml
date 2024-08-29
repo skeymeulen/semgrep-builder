@@ -45,7 +45,7 @@ jobs:
 
              cat ./semgrepinstall/semgrep/main.py
 
-             pipenv run pyinstaller semgrep.spec
+             pyinstaller semgrep.spec
             
       - run: pyenv version
       - run: pyenv install 3.8

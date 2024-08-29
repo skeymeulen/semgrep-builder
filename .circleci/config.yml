@@ -27,6 +27,8 @@ jobs:
 
              source ~/.bash_profile
              
+      - run: cat ~/.bash_profile
+      - run: cat ~/.bashrc
       - run: pyenv version
       - run: pyenv install 3.8
       - run: pyenv global 3.8

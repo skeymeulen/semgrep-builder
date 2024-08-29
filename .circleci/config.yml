@@ -35,7 +35,6 @@ jobs:
 
              pip install semgrep==1.52.0 --target ./semgrepinstall
 
-             >
              { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py;
              echo 'sys.exit(main())';} > tempfile
 

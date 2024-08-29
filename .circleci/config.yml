@@ -2,7 +2,7 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: vicamo/pyenv:3.8.12-bionic
+      - image: vicamo/pyenv:3.10.1-bionic
 jobs:
   build-binary:
     executor: pyinstaller
@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: ldd --version
       - run: python --version
-      - run: pyenv --version
+      - run: pyenv version
       - run: python -m pip install --no-cache-dir pipenv
       - run: pipenv run pip install pyinstaller
       - run: ldd --version

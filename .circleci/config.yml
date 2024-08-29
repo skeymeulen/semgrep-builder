@@ -21,7 +21,7 @@ jobs:
              
              eval "$(pyenv virtualenv-init -)"
 
-             source ~/.bashrc
+             source ~/.bash_profile
              
       - run: pyenv version
       - run: pyenv install 3.8

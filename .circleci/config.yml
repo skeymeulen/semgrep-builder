@@ -29,13 +29,11 @@ jobs:
 
              python --version
 
-             python -m pip install --no-cache-dir pipenv
-
-             pipenv run pip install pyinstaller
+             pip install pyinstaller
 
              ldd --version
 
-             pipenv run pip install semgrep==1.52.0 --target ./semgrepinstall
+             pip install semgrep==1.52.0 --target ./semgrepinstall
 
              >
              { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py;

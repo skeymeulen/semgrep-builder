@@ -2,7 +2,7 @@ version: 2.1
 executors:
   pyinstaller:
     docker:
-      - image: vicamo/pyenv:3.8-bookworm
+      - image: vicamo/pyenv:3.7.12-slim-bookworm
 jobs:
   build-binary:
     executor: pyinstaller

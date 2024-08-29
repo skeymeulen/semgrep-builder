@@ -13,22 +13,12 @@ jobs:
       - run: ldd --version
       - run: curl https://pyenv.run | bash
       - run:
-             export PATH="$HOME/.pyenv/bin:$PATH"
-             
-             echo ' ' >> ~/.bash_profile
-             
-             echo '# Pyenv Configuration' >> ~/.bash_profile
-             
-             echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-             
-             echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-             
-             echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+             export PYENV_ROOT="$HOME/.pyenv"
 
-             source ~/.bash_profile
+             [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+             pyenv init -
              
-      - run: cat ~/.bash_profile
-      - run: cat ~/.bashrc
       - run: pyenv version
       - run: pyenv install 3.8
       - run: pyenv global 3.8

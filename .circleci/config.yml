@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run: ldd --version
-      - run: yum install -y git gcc make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils tar
+      - run: yum install -y git gcc make zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils tar zip
       - run: ldd --version
       - run: curl https://pyenv.run | bash
       - run:

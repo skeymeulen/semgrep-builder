@@ -18,6 +18,8 @@ jobs:
              export PATH="$PYENV_ROOT/bin:$PATH"
 
              pyenv init -
+
+             exec "$SHELL"
              
       - run: pyenv version
       - run: pyenv install 3.8

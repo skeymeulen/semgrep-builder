@@ -28,6 +28,27 @@ jobs:
              pyenv global 3.8
 
              python --version
+
+             python -m pip install --no-cache-dir pipenv
+
+             pipenv run pip install pyinstaller
+
+             ldd --version
+
+             pipenv run pip install semgrep==1.52.0 --target ./semgrepinstall
+
+             >
+             { echo '#!/usr/bin/env python3'; cat ./semgrepinstall/semgrep/main.py;
+             echo 'sys.exit(main())';} > tempfile
+
+             mv tempfile ./semgrepinstall/semgrep/main.py
+
+             cp ./semgrepinstall/semgrep/main.py
+             ./semgrepinstall/semgrep/__main__.py
+
+             cat ./semgrepinstall/semgrep/main.py
+
+             pipenv run pyinstaller semgrep.spec
             
       - run: pyenv version
       - run: pyenv install 3.8

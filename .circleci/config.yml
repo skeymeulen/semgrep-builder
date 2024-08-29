@@ -20,6 +20,8 @@ jobs:
              eval "$(pyenv init --path)"
              
              eval "$(pyenv init -)"
+
+             pyenv version
             
       - run: pyenv version
       - run: pyenv install 3.8
